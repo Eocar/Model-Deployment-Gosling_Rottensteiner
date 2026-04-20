@@ -1,0 +1,50 @@
+{
+  "model_type": "Ridge",
+  "target": "quality",
+  "feature_names": [
+    "fixed acidity",
+    "volatile acidity",
+    "citric acid",
+    "residual sugar",
+    "chlorides",
+    "free sulfur dioxide",
+    "total sulfur dioxide",
+    "density",
+    "pH",
+    "sulphates",
+    "alcohol"
+  ],
+  "feature_defaults": {
+    "fixed acidity": 7.8,
+    "volatile acidity": 0.66,
+    "citric acid": 0.0,
+    "residual sugar": 1.9,
+    "chlorides": 0.075,
+    "free sulfur dioxide": 15.0,
+    "total sulfur dioxide": 40.0,
+    "density": 0.997,
+    "pH": 3.36,
+    "sulphates": 0.56,
+    "alcohol": 9.5
+  },
+  "intercept": 4.791596293987808,
+  "coefficients": [
+    0.17706335253475594,
+    -0.02680378926235032,
+    0.02315481472672733,
+    -0.0002460542890736781,
+    -0.0005030108152242654,
+    0.09664878662597039,
+    -0.048460167098227314,
+    -7.960818198108018e-05,
+    -0.025150590088783342,
+    -0.0006859195832878712,
+    0.019041123847956757
+  ],
+  "metrics": {
+    "mae": 0.4373726812236356,
+    "rmse": 0.43920728034639844,
+    "r2": 0.7829840855020602
+  },
+  "notes": "This model is exported for browser-side inference via JS."
+}
