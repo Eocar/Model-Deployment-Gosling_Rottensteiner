@@ -14,7 +14,8 @@ function predict(model, values) {
   return score;
 }
 
-function buildForm(featureNames) {
+function buildForm(model) {
+  const featureNames = model.feature_names;
   const form = document.getElementById('predict-form');
   form.innerHTML = '';
   featureNames.forEach((name) => {
@@ -26,7 +27,8 @@ function buildForm(featureNames) {
     input.step = '0.01';
     input.name = name;
     input.required = true;
-    input.value = '0';
+    const defaultValue = model.feature_defaults?.[name] ?? 0;
+    input.value = String(defaultValue);
 
     label.appendChild(input);
     form.appendChild(label);
@@ -35,7 +37,7 @@ function buildForm(featureNames) {
 
 (async () => {
   const model = await loadModel();
-  buildForm(model.feature_names);
+  buildForm(model);
 
   document.getElementById('predict').addEventListener('click', () => {
     const values = model.feature_names.map((featureName) => {

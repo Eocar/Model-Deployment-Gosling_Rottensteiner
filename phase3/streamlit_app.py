@@ -45,7 +45,7 @@ def _load_feature_data() -> pd.DataFrame:
     return pd.read_csv(data_path)
 
 
-def _estimate_interval_halfwidth(model, feature_data: pd.DataFrame) -> float:
+def _estimate_prediction_interval_halfwidth(model, feature_data: pd.DataFrame) -> float:
     X = feature_data[FEATURES]
     y = feature_data["quality"]
     preds = model.predict(X)
@@ -59,7 +59,7 @@ def main() -> None:
 
     model = _load_model()
     feature_data = _load_feature_data()
-    ci_halfwidth = _estimate_interval_halfwidth(model, feature_data)
+    ci_halfwidth = _estimate_prediction_interval_halfwidth(model, feature_data)
     user_values = {}
 
     with st.form("prediction_form"):

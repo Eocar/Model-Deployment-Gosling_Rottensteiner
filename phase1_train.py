@@ -38,6 +38,7 @@ def main() -> None:
         "model_type": "Ridge",
         "target": "quality",
         "feature_names": feature_names,
+        "feature_defaults": {col: float(df[col].median()) for col in feature_names},
         "intercept": float(model.intercept_),
         "coefficients": [float(c) for c in model.coef_],
         "metrics": metrics,
