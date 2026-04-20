@@ -56,6 +56,9 @@ def main() -> None:
         input_df = pd.DataFrame([user_values], columns=FEATURES)
         prediction = float(model.predict(input_df)[0])
 
+        st.caption(
+            "Confidence interval is an illustrative approximation (±0.25) for demo usage."
+        )
         lower = prediction - 0.25
         upper = prediction + 0.25
         st.success(

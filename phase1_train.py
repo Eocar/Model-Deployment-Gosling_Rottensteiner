@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error, r2_score, root_mean_squared_error
 from sklearn.model_selection import train_test_split
 
@@ -24,7 +24,7 @@ def main() -> None:
         X, y, test_size=0.33, random_state=42
     )
 
-    model = LinearRegression()
+    model = Ridge(alpha=10.0)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
@@ -35,7 +35,7 @@ def main() -> None:
     }
 
     payload = {
-        "model_type": "LinearRegression",
+        "model_type": "Ridge",
         "target": "quality",
         "feature_names": feature_names,
         "intercept": float(model.intercept_),
