@@ -1,7 +1,7 @@
 async function loadModel() {
   const response = await fetch('./model.json');
   if (!response.ok) {
-    throw new Error('Unable to load model.json. Run phase1_train.py first.');
+    throw new Error('Unable to load model.json. Please ensure the file is available in the deployment.');
   }
   return response.json();
 }

@@ -27,6 +27,7 @@ FEATURES = [
 ]
 
 
+@st.cache_resource
 def _load_model():
     mlflow.set_tracking_uri(TRACKING_URI)
     client = MlflowClient()
@@ -40,12 +41,15 @@ def _load_model():
     return mlflow.pyfunc.load_model(f"models:/{MODEL_NAME}/{latest.version}")
 
 
+@st.cache_data
 def _load_feature_data() -> pd.DataFrame:
     data_path = ROOT / "data" / "winequality-red.csv"
     return pd.read_csv(data_path)
 
 
-def _estimate_prediction_interval_halfwidth(model, feature_data: pd.DataFrame) -> float:
+@st.cache_data
+def _estimate_prediction_interval_halfwidth(feature_data: pd.DataFrame, model_name: str) -> float:
+    model = _load_model()
     X = feature_data[FEATURES]
     y = feature_data["quality"]
     preds = model.predict(X)
@@ -59,7 +63,7 @@ def main() -> None:
 
     model = _load_model()
     feature_data = _load_feature_data()
-    ci_halfwidth = _estimate_prediction_interval_halfwidth(model, feature_data)
+    ci_halfwidth = _estimate_prediction_interval_halfwidth(feature_data, MODEL_NAME)
     user_values = {}
 
     with st.form("prediction_form"):
