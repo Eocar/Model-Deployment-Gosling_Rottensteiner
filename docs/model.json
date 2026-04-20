@@ -1,0 +1,37 @@
+{
+  "model_type": "LinearRegression",
+  "target": "quality",
+  "feature_names": [
+    "fixed acidity",
+    "volatile acidity",
+    "citric acid",
+    "residual sugar",
+    "chlorides",
+    "free sulfur dioxide",
+    "total sulfur dioxide",
+    "density",
+    "pH",
+    "sulphates",
+    "alcohol"
+  ],
+  "intercept": 17.816645720087102,
+  "coefficients": [
+    -0.6190465875103497,
+    -1.4537526356137938,
+    -0.7724770196578045,
+    -2.1269354042971034,
+    -0.11694030369266215,
+    1.7698390455507154,
+    -0.3331293223985081,
+    -0.03039249302090109,
+    -3.3891696126783013,
+    -1.0870615756545314,
+    0.13034292729354435
+  ],
+  "metrics": {
+    "mae": 8.728530871511268,
+    "rmse": 10.016158671186801,
+    "r2": -111.86386384218937
+  },
+  "notes": "This model is exported for browser-side inference via JS."
+}
