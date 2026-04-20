@@ -1,7 +1,5 @@
 # Model Deployment – Gosling & Rottensteiner
 
-This repository contains all three required phases of the assignment in English.
-
 ## Repository Structure
 
 - `data/winequality-red.csv` – dataset used in all phases
